@@ -5,6 +5,8 @@ function App() {
   return (
     <div className="app">
           <div className="landing-img">
+
+              {/* {https://unsplash.com/photos/o2DVsV2PnHE} */}
               <img src={cameraPhoto} alt='Woman holding a camera surrounded by flowers' />
           </div>
 
