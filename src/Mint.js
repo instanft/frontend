@@ -1,17 +1,13 @@
-import React, { Component, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+//import { Link } from 'react-router-dom';
 
 class Mint extends Component {
   state = {
     instagram: '#',
     code: '',
     redirect_uri:
-      'https://46db-200-7-246-43.ngrok.io/mint'
+      'https://f29e-200-7-246-43.ngrok.io/mint'
   };
-
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount = async () => {
     let server = this.state.redirect_uri;
