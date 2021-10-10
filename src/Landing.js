@@ -30,6 +30,7 @@ const Landing = () => {
       }
     return (
         <div className="app">
+          <h1>WeMint</h1>
           <div className="landing-img">
 
               {/* {https://unsplash.com/photos/o2DVsV2PnHE} */}
@@ -39,6 +40,7 @@ const Landing = () => {
           <div>
             <nav>
               <ul>
+                  <button onClick={() => checkLoginState()}>Logged In?</button>   {/* For testing only */}
                   <Link to="/">Home</Link>
                   <Link to="/about">About</Link>
                   <div className="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true"></div>
@@ -47,8 +49,10 @@ const Landing = () => {
             </nav>
 
             <div className="landing-content">
-              <h1>WeMint</h1>
-              <button onClick={() => checkLoginState()}>Logged In?</button>
+              <h2>Own your posts.</h2> 
+              <br></br>
+              
+              <p>WeMint lets you mint NFTs from your social media accounts so you can own & monetize your entire digital life.</p>
 
               <br></br><br></br><br></br>
 
@@ -58,9 +62,7 @@ const Landing = () => {
                 </form>
               
               <div>
-                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-
-                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                  <p>Simply login to your Instagram account, copy & paste a link to any of your posts, and click "Mint" to take back what's yours.</p>
               </div>
             </div>
       </div>

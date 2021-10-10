@@ -11,6 +11,19 @@
 	display: flex;
 }
 
+.app > h1 {
+    position: absolute;
+    top: 1.5%;
+    left: 1.5%;
+    color: white;
+    font-size: 28px;
+}
+
+.landing-content > h2 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
 .landing-img, .landing-img > img {
 	height: 100vh;
 	max-height: 100vh;
@@ -46,6 +59,11 @@ li > a {
     color: white;
     /* background-color: #6DCEBD; */
     /* border-radius: 30px; */
+}
+
+.landing-content > p, .landing-content > div > p {
+    font-size: 18px;
+    line-height: 2;
 }
 
 .landing-content > form {
