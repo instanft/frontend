@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import cameraPhoto from './assets/camera-unsplash.jpg';
 import {Link} from 'react-router-dom';
+import MintSuccessModal from './components/MintSuccessModal';
 
 const Landing = () => {
+  const [successfulMint, setSuccessfulMint] = useState(false);
     function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
         console.log('Welcome!  Fetching your information.... ');
         window.FB.api('/me', function(response) {
@@ -49,6 +51,7 @@ const Landing = () => {
             </nav>
 
             <div className="landing-content">
+              {successfulMint ? <MintSuccessModal setSuccessfulMint={setSuccessfulMint}/> : null}
               <h2>Own your posts.</h2> 
               <br></br>
               
