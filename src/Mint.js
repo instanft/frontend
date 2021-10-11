@@ -14,7 +14,7 @@ class Mint extends Component {
     let server = this.state.redirect_uri;
     let instagram_code =
       //'https://api.instagram.com/oauth/authorize?client_id=455896699087409' +
-      'https://api.instagram.com/oauth/authorize?client_id=359708129173792' +
+      'https://api.instagram.com/oauth/authorize?client_id=1190054788155032' +
       '&scope=user_profile,user_media&response_type=code' +
       '&redirect_uri=' +
       server;
