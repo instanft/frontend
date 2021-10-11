@@ -11,15 +11,18 @@ const handler = async function(event, context) {
   if (code) {
     try {
       let token_data = await getToken(code);
+      console.log('token:' + token_data);
       let token = token_data.access_token;
       if (token) {
         let media_list = await mediaIds(token);
+        console.log(media_list);
         items = await getItems(media_list.data, token);
+        console.log(items);
       }
 
       return {
         statusCode: 200,
-        body: JSON.stringify({ instagram: items })
+        body: JSON.stringify(items)
       };
     } catch (error) {
       // output to netlify function log
@@ -84,11 +87,13 @@ getToken = async code => {
     uri: 'https://api.instagram.com/oauth/access_token',
     method: 'POST',
     form: {
-      client_id: '455896699087409',
-      client_secret: '3c1b839b2a776de7a3bafe64eb98dc6a',
+      //client_id: '455896699087409',
+      client_id: '359708129173792',
+      //client_secret: '3c1b839b2a776de7a3bafe64eb98dc6a',
+      client_secret: '6527a8118874d23cab00241be04a43b4',
       grant_type: 'authorization_code',
       redirect_uri:
-        'https://0139-2800-bf0-171-3fe-9c3e-4116-3f8e-9eeb.ngrok.io/mint',
+        'https://vigorous-bartik-1b0e50.netlify.app/mint',
       code: code
     }
   };
