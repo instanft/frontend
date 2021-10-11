@@ -47,7 +47,7 @@ class Mint extends Component {
   };
 
   listOfImages = images => {
-    const html = images.map(item => `<img src=${item.media_url} alt=${item.caption} style=${{width: '400px', height: '400px'}} />`).join('<br/>');
+    const html = images.map(item => `<img src=${item.media_url} alt=${item.caption} height="400" width="400" />`);
     return html;
   };
 
