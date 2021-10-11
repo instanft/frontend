@@ -3,67 +3,84 @@ import React, { Component } from 'react';
 
 class Mint extends Component {
   state = {
-    instagram: '#',
+    instagram_code: '#',
     code: '',
+    instagram: [],
     redirect_uri:
-      'https://f29e-200-7-246-43.ngrok.io/mint'
+      'https://vigorous-bartik-1b0e50.netlify.app/mint'
   };
 
   componentDidMount = async () => {
     let server = this.state.redirect_uri;
-    let instagram =
-      'https://api.instagram.com/oauth/authorize?client_id=455896699087409' +
+    let instagram_code =
+      //'https://api.instagram.com/oauth/authorize?client_id=455896699087409' +
+      'https://api.instagram.com/oauth/authorize?client_id=1190054788155032' +
       '&scope=user_profile,user_media&response_type=code' +
       '&redirect_uri=' +
       server;
-    this.setState({ instagram: instagram, redirect_uri: server });
+    this.setState({ instagram_code: instagram_code, redirect_uri: server });
     await this.instagramCode();
-    this.instagramToken();
   };
 
   instagramCode = async () => {
     if (this.props.location && this.props.location.search) {
       let code = this.props.location.search.replace('?code=', '');
-      //console.log(code);
       this.setState({ code: code });
+      //await this.getImagesInstagram(code);
     }
   };
 
-  instagramToken = async () => {
-    const code = this.state.code;
-    const uri = this.state.redirect_uri;
-    console.log(code);
-    console.log(uri);
-    if (code && uri) {
-      const data = new FormData();
-      data.append('client_id', '455896699087409');
-      data.append('client_secret', '3c1b839b2a776de7a3bafe64eb98dc6a');
-      data.append('grant_type', 'authorization_code');
-      data.append('redirect_uri', uri);
-      data.append('code', code);
+  getImagesInstagram = async code => {
+    var component = this;
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    };
 
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: data
-      };
-      const response = await fetch(
-        'https://api.instagram.com/oauth/access_token',
-        requestOptions
-      );
-      const json = await response.json();
-      console.log(json);
-      //this.setState({ postId: data.id });
-    }
+    fetch('/.netlify/functions/instagram-fetch?code=' + code, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+		  console.log(data);
+        component.images = data;
+		const div = document.getElementById("images");
+		const names = data.map(item => <img src={item.media_url} alt={item.caption}></img>).join("<br/>");
+		div.innerHTML = names;
+      });
+  };
+
+  callFunction = async () => {
+	const code = this.state.code;
+    console.log(this.state.code);
+	await this.getImagesInstagram(code);
+  };
+
+  callFunctionImages = async () => {
+    console.log(this.images);
+  };
+
+  renderImages = async () => {
+    let images = this.state.instagram;
+
+    return (
+      <div>
+        {images.map((value, index) => {
+          return <img key={index} src={value.media_url} alt={value.caption} />;
+        })}
+      </div>
+    );
   };
 
   render() {
+    console.log(this.state.instagram);
     return (
       <div>
-        <a href={this.state.instagram}>Instagram</a>
+        <a href={this.state.instagram_code}>Instagram</a>
         <p>
           {this.state.code}
         </p>
+        <button onClick={this.callFunction}> test </button>
+        <button onClick={this.callFunctionImages}> Images? </button>
+		<div id="images"/>
       </div>
     );
   }

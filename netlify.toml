@@ -5,6 +5,9 @@
   to = "/index.html"
   status = 200
 
+[build]
+  functions = "functions"
+
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
   for = "/*"
