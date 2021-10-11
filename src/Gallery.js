@@ -8,6 +8,7 @@ import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 
 const Gallery = () => {
     return (
+      <div className="gallery-view">
         <ImageList sx={{ width: '500px', height: '450px' }}>
         {itemData.map((item) => (
           <ImageListItem key={item.img} style={ {width: '50px !important'}}>
@@ -25,6 +26,7 @@ const Gallery = () => {
           </ImageListItem>
         ))}
       </ImageList>  
+      </div>
     );
 }
 

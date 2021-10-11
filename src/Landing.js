@@ -18,6 +18,7 @@ const Landing = () => {
           // console.log('woo!', provider, provider.isMetaMask, provider.selectedAddress);
           const accounts = await provider.request({method: "eth_requestAccounts"});
           console.log(accounts);
+          alert('You logged in successfully.');
         } catch (err) {
           alert('Please login to your MetaMask account and try again.');
           console.log(err);

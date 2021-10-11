@@ -65,9 +65,9 @@ class Mint extends Component {
     let images = this.state.instagram;
 
     return (
-      <div>
+      <div className="gallery-view">
         {images.map((value, index) => {
-          return <img key={index} src={value.media_url} alt={value.caption} />;
+          return <img key={index} src={value.media_url} alt={value.caption} style={{width: '400px', height: '400px'}}/>;
         })}
       </div>
     );
