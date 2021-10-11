@@ -5,6 +5,11 @@
   to = "/index.html"
   status = 200
 
+[build]
+  command = "yarn run build"
+  functions = "functions"
+  publish = "dist"
+
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
   for = "/*"
