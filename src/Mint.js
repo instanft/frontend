@@ -6,8 +6,7 @@ class Mint extends Component {
     instagram_code: '#',
     code: '',
     instagram: [],
-    redirect_uri:
-      'https://vigorous-bartik-1b0e50.netlify.app/mint'
+    redirect_uri: 'https://vigorous-bartik-1b0e50.netlify.app/mint'
   };
 
   componentDidMount = async () => {
@@ -40,18 +39,22 @@ class Mint extends Component {
     fetch('/.netlify/functions/instagram-fetch?code=' + code, requestOptions)
       .then(response => response.json())
       .then(data => {
-		  console.log(data);
+        console.log(data);
         component.images = data;
-		const div = document.getElementById("images");
-		const names = data.map(item => <img src={item.media_url} alt={item.caption}></img>).join("<br/>");
-		div.innerHTML = names;
+        const div = document.getElementById('images');
+        div.innerHTML = this.listOfImages(data);
       });
   };
 
+  listOfImages = images => {
+    const html = images.map(item => `<img src=${item.media_url} alt=${item.caption} />`).join('<br/>');
+    return html;
+  };
+
   callFunction = async () => {
-	const code = this.state.code;
+    const code = this.state.code;
     console.log(this.state.code);
-	await this.getImagesInstagram(code);
+    await this.getImagesInstagram(code);
   };
 
   callFunctionImages = async () => {
@@ -78,9 +81,9 @@ class Mint extends Component {
         <p>
           {this.state.code}
         </p>
-        <button onClick={this.callFunction}> test </button>
-        <button onClick={this.callFunctionImages}> Images? </button>
-		<div id="images"/>
+        <button onClick={this.callFunction}> Get Images </button>
+        <button onClick={this.callFunctionImages}> Images Console? </button>
+        <div id="images" />
       </div>
     );
   }
