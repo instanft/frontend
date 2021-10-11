@@ -47,7 +47,7 @@ class Mint extends Component {
   };
 
   listOfImages = images => {
-    const html = images.map(item => `<img src=${item.media_url} alt=${item.caption} />`).join('<br/>');
+    const html = images.map(item => `<img src=${item.media_url} alt=${item.caption} style=${{width: '400px', height: '400px'}} />`).join('<br/>');
     return html;
   };
 
@@ -83,7 +83,7 @@ class Mint extends Component {
         </p>
         <button onClick={this.callFunction}> Get Images </button>
         <button onClick={this.callFunctionImages}> Images Console? </button>
-        <div id="images" />
+        <div id="images" className="gallery-view" />
       </div>
     );
   }
