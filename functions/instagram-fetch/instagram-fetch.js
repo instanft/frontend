@@ -33,6 +33,12 @@ const handler = async function(event, context) {
         body: JSON.stringify({ msg: error.message })
       };
     }
+  } else {
+    return {
+      statusCode: 500,
+      // Could be a custom message or object i.e. JSON.stringify(err)
+      body: JSON.stringify({ msg: "You've not sent Intagram Code" })
+    };
   }
 };
 
@@ -92,8 +98,7 @@ getToken = async code => {
       //client_secret: '3c1b839b2a776de7a3bafe64eb98dc6a',
       client_secret: '6527a8118874d23cab00241be04a43b4',
       grant_type: 'authorization_code',
-      redirect_uri:
-        'https://vigorous-bartik-1b0e50.netlify.app/mint',
+      redirect_uri: 'https://vigorous-bartik-1b0e50.netlify.app/mint',
       code: code
     }
   };
