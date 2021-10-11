@@ -1,31 +1,31 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import cameraPhoto from './assets/camera-unsplash.jpg';
 import {Link} from 'react-router-dom';
 import MintSuccessModal from './components/MintSuccessModal';
+import detectEthereumProvider from '@metamask/detect-provider';
 // import Web3 from 'web3';
 
 const Landing = () => {
+  let provider = {};
   const [successfulMint, setSuccessfulMint] = useState(false);
 
-  // useEffect(async () => {
-    // const { ethereum } = window;
-    
-    // if (ethereum && ethereum.isMetamask) {
-      // const web3 = new Web3(window.ethereum);
-      // await web3.request({ method: 'eth_requestAccounts' })
-      // try {
-      //   const accounts = await window.ethereum.request("eth_requestAccounts");
-      // } catch (err) {
-      //   console.log("User cancelled");
-      //   console.log(err);
-      // }
-    // } 
-    // const { ethereum } = window;
-    // console.log(window.ethereum.isMetamask);
-    // if (ethereum.isMetamask) {
-    //   console.log('yeah!', ethereum.isMetamask);
-    // }
-  // }, [])
+    const initMetamask = async (e) => {
+      e.preventDefault();
+      provider = await detectEthereumProvider();
+
+      if (provider) {
+        try {
+          // console.log('woo!', provider, provider.isMetaMask, provider.selectedAddress);
+          const accounts = await provider.request({method: "eth_requestAccounts"});
+          console.log(accounts);
+        } catch (err) {
+          alert('Please login to your MetaMask account and try again.');
+          console.log(err);
+        }
+      } else {
+        alert('Please install MetaMask and try again.');
+      }
+    }
 
     function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
         console.log('Welcome!  Fetching your information.... ');
@@ -67,9 +67,9 @@ const Landing = () => {
                   <Link to="/">Home</Link>
                   <Link to="/about">About</Link>
                   <Link to="/mint">Mint</Link>
-                  <Link className="metamask-connect" to="/" 
-                  // onClick={() => initMetamask()}
-                  >Connect Wallet</Link>
+                  <a className="metamask-connect" href="/"
+                  onClick={(event) => initMetamask(event)}
+                  >Connect Wallet</a>
                   <div className="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true"></div>
               </ul>
             </nav>

@@ -64,5 +64,5 @@
 //   });  
 
 
-// MetaMaskClientCheck();
+
 // window.addEventListener('DOMContentLoaded', initialize);
