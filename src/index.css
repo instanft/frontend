@@ -59,6 +59,10 @@ a {
     margin-right: 15px !important;
 }
 
+.metamask-connect {
+    color: orange;
+}
+
 .landing-content-parent {
     width: 100%;
 }

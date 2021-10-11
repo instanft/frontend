@@ -3,8 +3,14 @@ import Landing from './Landing';
 import Mint from './Mint';
 import Gallery from './Gallery';
 import { Switch, Route } from 'react-router-dom';
+// import {initialize} from './metamask';
+// import { useEffect } from 'react';
 
 function App() {
+  // useEffect(() => {
+  //   initialize();
+  // }, []);
+  
   return (
     <Switch>
       <Route exact path="/" component={Landing}/>
