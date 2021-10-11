@@ -6,6 +6,9 @@
     FONT FAMILY: Lato Regular 400   https://fonts.google.com/specimen/Lato
 */
 
+/* html, body, #root, .app {
+    min-width: 100vw;
+} */
 
 .app {
 	display: flex;
@@ -33,23 +36,31 @@
     background-color: #424F4D;
 }
 
+nav {
+    margin-right: 10px !important;
+}
+
 ul {
     display: flex;
     margin-top: 15px !important;
     justify-content: flex-end;
+    align-items: center;
 }
 
 li {
     margin-right: 20px !important;
 }
 
-li > a {
+a {
     text-decoration: none;
     border-radius: 20px;
-    /* background-color: #6DCEBD; */
     padding: 5px;
-    /* border: 1px solid #6DCEBD; */
     color: white;
+    margin-right: 15px !important;
+}
+
+.landing-content-parent {
+    width: 100%;
 }
 
 .landing-content {
@@ -88,4 +99,10 @@ li > a {
 
 .landing-content > div > * {
     margin-top: 50px;
+}
+
+.test-button {
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
 }

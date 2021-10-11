@@ -39,14 +39,15 @@ const Landing = () => {
               <img src={cameraPhoto} alt='Woman holding a camera surrounded by flowers' />
           </div>
 
-          <div>
+          <div className="landing-content-parent">
+              <button className="test-button" onClick={() => checkLoginState()}>Logged In?</button>   {/* For testing only */}
             <nav>
               <ul>
-                  <button onClick={() => checkLoginState()}>Logged In?</button>   {/* For testing only */}
                   <Link to="/">Home</Link>
                   <Link to="/about">About</Link>
-                  <div className="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true"></div>
                   <Link to="/connect">Connect</Link>
+                  <Link to="/mint">Mint</Link>
+                  <div className="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true"></div>
               </ul>
             </nav>
 
