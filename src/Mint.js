@@ -147,7 +147,7 @@ class Mint extends Component {
         <p>{this.state.metadata !== {} ? this.state.metadata.ipfs : null}</p>
             <form>
                 <input placeholder="Copy/paste your Instagram post URL..."></input>
-                <button type="submit" onSubmit={mintInstagramPost(this.state.metadata)}>Mint</button>
+                <button type="submit" onSubmit={() => mintInstagramPost(this.state.metadata)}>Mint</button>
             </form>
       </div>
     );
