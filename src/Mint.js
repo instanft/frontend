@@ -7,6 +7,7 @@ class Mint extends Component {
     instagram_code: '#',
     code: '',
     instagram: [],
+    images: [],
     metadata: {},
     redirect_uri: 'https://vigorous-bartik-1b0e50.netlify.app/mint'
   };
@@ -43,6 +44,7 @@ class Mint extends Component {
       .then(data => {
         console.log(data);
         component.images = data;
+        this.state.images = data;
         const div = document.getElementById('images');
         div.innerHTML = this.listOfImages(data);
       });
@@ -62,23 +64,24 @@ class Mint extends Component {
     await this.getImagesInstagram(code);
   };
 
-  callFunctionImages = async () => {
-    this.images = [
+  pushImageToIPFS = async () => {
+    console.log('double check: ', this.state.images);
+    const image = [
       {
         media_url:
-          'https://scontent-iad3-2.cdninstagram.com/v/t51.2885-15/1171992_220185431486696_1417365155_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=tssZuO0j088AX--a6mc&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=ANQ71j8EAAAA&oh=fc9dbc9c233894897eb37883e4c04580&oe=616A3275',
-        caption: 'This image is a bike',
-        username: 'christmo',
-        id: '123'
+          this.state.images[0].media_url,
+        caption: this.state.images[0].caption,
+        username: this.state.images[0].username,
+        id: this.state.images[0].id
       }
     ];
 
+    console.log('img: ', image);
     const component = this;
-    let image = this.images[0];
+    // let image = this.images[0];
     let url = image.media_url;
     let caption = image.caption;
     let name = image.username + '-' + image.id;
-    console.log(image);
 
     fetch(url)
       .then(res => res.blob()) // Gets the response and returns it as a blob
@@ -135,8 +138,10 @@ class Mint extends Component {
           {this.state.code}
         </p>
         <button onClick={this.callFunction}> Get Images </button>
-        <button onClick={this.callFunctionImages}> Send 1 to IPFS </button>
-        <div id="images" className="gallery-view" />
+        <button 
+        // onClick={this.callFunctionImages}
+        > Send 1 to IPFS </button>
+        <div id="images" className="gallery-view" onClick={this.pushImageToIPFS} />
       </div>
     );
   }
