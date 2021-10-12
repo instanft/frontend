@@ -66,13 +66,14 @@ class Mint extends Component {
 
   pushImageToIPFS = async () => {
     console.log('double check: ', this.state.images);
+    const randNum = Math.floor(Math.random() * 24);
     const image = [
       {
         media_url:
-          this.state.images[0].media_url,
-        caption: this.state.images[0].caption,
-        username: this.state.images[0].username,
-        id: this.state.images[0].id
+          this.state.images[randNum].media_url,
+        caption: this.state.images[randNum].caption,
+        username: this.state.images[randNum].username,
+        id: this.state.images[randNum].id
       }
     ];
 
