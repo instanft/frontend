@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {mintInstagramPost} from './contracts/utils';
 //import { Link } from 'react-router-dom';
 //var request = require('request');
 
@@ -143,6 +144,11 @@ class Mint extends Component {
         // onClick={this.callFunctionImages}
         > Send 1 to IPFS </button>
         <div id="images" className="gallery-view" onClick={this.pushImageToIPFS} />
+        <p>{this.state.metadata !== {} ? this.state.metadata.ipfs : null}</p>
+            <form>
+                <input placeholder="Copy/paste your Instagram post URL..."></input>
+                <button type="submit" onSubmit={mintInstagramPost(this.state.metadata)}>Mint</button>
+            </form>
       </div>
     );
   }
