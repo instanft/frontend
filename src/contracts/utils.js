@@ -15,12 +15,12 @@ export const mintInstagramPost = async (metadata) => {
           console.log(signer);
     
           const contract = new ethers.Contract(
-            '0x4DC219BBEc605b59aCA22275094fb46B6937194D',   //RINKEBY
+            '0x9329DC8c9cA96B6eAB0714fcC64f31B610f281Ad',   //RINKEBY
             mintAbi,
             signer,
           );
           console.log(contract);
-
+          console.log(metadata.ipfs, typeof metadata.ipfs, metadata.username, typeof metadata.username, metadata.caption, typeof metadata.caption)
           const mintTx = await contract.safemint(
             metadata.ipfs,
             metadata.username,
