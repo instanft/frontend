@@ -10,13 +10,16 @@ export const mintInstagramPost = async (metadata) => {
           };
     
           const provider = new ethers.providers.Web3Provider(window.ethereum);
+          console.log(provider);
           const signer = provider.getSigner();
+          console.log(signer);
     
           const contract = new ethers.Contract(
             '0x4DC219BBEc605b59aCA22275094fb46B6937194D',   //RINKEBY
             mintAbi,
             signer,
           );
+          console.log(contract);
 
           const mintTx = await contract.safemint(
             metadata.ipfs,

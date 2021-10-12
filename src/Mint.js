@@ -150,12 +150,12 @@ class Mint extends Component {
         <button
         // onClick={this.callFunctionImages}
         > Send 1 to IPFS </button>
-        <div id="images" className="gallery-view" onClick={this.pushImageToIPFS} />
         <p>{this.state.metadata !== {} ? this.state.metadata.ipfs : null}</p>
             <form>
                 <input placeholder="Copy/paste your Instagram post URL..."></input>
                 <button type="submit" onClick={this.mint}>Mint</button>
             </form>
+        <div id="images" className="gallery-view" onClick={this.pushImageToIPFS} />
       </div>
     );
   }
