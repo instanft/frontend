@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {mintInstagramPost} from './contracts/utils';
+import { mintInstagramPost } from './contracts/utils';
 //import { Link } from 'react-router-dom';
 //var request = require('request');
 
@@ -66,9 +66,11 @@ class Mint extends Component {
   };
 
   pushImageToIPFS = async () => {
+    const component = this;
     console.log('double check: ', this.state.images);
     const randNum = Math.floor(Math.random() * 24);
-    const image = [
+    let image = this.state.images[randNum];
+    /*const image = [
       {
         media_url:
           this.state.images[randNum].media_url,
@@ -76,11 +78,9 @@ class Mint extends Component {
         username: this.state.images[randNum].username,
         id: this.state.images[randNum].id
       }
-    ];
+    ];*/
 
     console.log('img: ', image);
-    const component = this;
-    // let image = this.images[0];
     let url = image.media_url;
     let caption = image.caption;
     let name = image.username + '-' + image.id;
@@ -140,7 +140,7 @@ class Mint extends Component {
           {this.state.code}
         </p>
         <button onClick={this.callFunction}> Get Images </button>
-        <button 
+        <button
         // onClick={this.callFunctionImages}
         > Send 1 to IPFS </button>
         <div id="images" className="gallery-view" onClick={this.pushImageToIPFS} />
