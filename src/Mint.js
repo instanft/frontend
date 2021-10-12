@@ -83,6 +83,7 @@ class Mint extends Component {
     console.log('img: ', image);
     let url = image.media_url;
     let caption = image.caption;
+    let username = image.username;
     let name = image.username + '-' + image.id;
 
     fetch(url)
@@ -93,11 +94,11 @@ class Mint extends Component {
         myImage.src = objectURL;
         document.getElementById('images').appendChild(myImage);
         document.blob = blob;
-        component.saveNFT(name, caption, blob);
+        component.saveNFT(name, caption, username, blob);
       });
   };
 
-  saveNFT = async (name, description, blob) => {
+  saveNFT = async (name, description, username, blob) => {
     const formData = new FormData();
     formData.append(
       'file',
@@ -122,6 +123,7 @@ class Mint extends Component {
           ipfs: 'https://ipfs.io/ipfs/' + data.IpfsHash,
           gateway: 'https://gateway.pinata.cloud/ipfs/' + data.IpfsHash,
           caption: description,
+          username: username,
           ...data
         };
         console.log(metadata);
