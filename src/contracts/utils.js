@@ -24,6 +24,7 @@ export const mintInstagramPost = async (metadata) => {
             metadata.caption
           )
           console.log(mintTx);
+          return mintTx;
     } catch (err) {
         console.log(err);
     }

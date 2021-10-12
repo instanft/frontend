@@ -132,6 +132,12 @@ class Mint extends Component {
       });
   };
 
+   mint = async (event) => {
+     event.preventDefault();
+    let res = await mintInstagramPost(this.state.metadata);
+    console.log(res);
+  }
+
   render() {
     return (
       <div>
@@ -147,7 +153,7 @@ class Mint extends Component {
         <p>{this.state.metadata !== {} ? this.state.metadata.ipfs : null}</p>
             <form>
                 <input placeholder="Copy/paste your Instagram post URL..."></input>
-                <button type="submit" onSubmit={() => mintInstagramPost(this.state.metadata)}>Mint</button>
+                <button type="submit" onSubmit={(e) => mint(e)}>Mint</button>
             </form>
       </div>
     );
